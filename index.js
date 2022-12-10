@@ -2,9 +2,17 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const chalk = require('chalk');
+const path = require('path');
+
+
+//view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname + '/views'));
 
 app.get('/', (req, res) => {
-    res.send('This is main page of the express server!')
+    // res.send('This is main page of the express server!');
+    // res.sendFile(path.join(__dirname + '/views/home.html'));
+    res.render('home');
 })
 
 app.get('/companies/:name', (req, res) => {
