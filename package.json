@@ -5,11 +5,13 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.18.2",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.20"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon index.js -e js,json"
   },
   "author": "",
   "license": "ISC"

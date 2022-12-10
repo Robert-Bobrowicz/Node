@@ -3,7 +3,7 @@ const app = express();
 const PORT = 3000;
 
 app.get('/', (req, res) => {
-    res.send('Hello express server!')
+    res.send('This is main page of the express server!')
 })
 
 app.get('/companies/:name', (req, res) => {
