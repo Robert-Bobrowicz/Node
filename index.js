@@ -25,7 +25,8 @@ app.get('/companies/:name', (req, res) => {
 
     const company = companies.find(x => x.slug === name);
     if (company) {
-        res.send(`Company name: ${company.name}`)
+        // res.send(`Company name: ${company.name}`);
+        res.render('company', { name: company?.name });
     } else {
         res.send('Company does not exist in DB');
     };
