@@ -28,5 +28,5 @@ app.get('/kontakt', (req, res) => {
 })
 
 app.listen(PORT, () => {
-    console.log(chalk.blue(`Server is listening on port: ${PORT}`));
+    console.log(chalk.green(`Server is listening on port: ${PORT}`));
 })
