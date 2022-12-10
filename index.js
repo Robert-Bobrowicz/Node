@@ -1,17 +1,18 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const chalk = require('chalk');
 
 app.get('/', (req, res) => {
     res.send('This is main page of the express server!')
 })
 
 app.get('/companies/:name', (req, res) => {
-    console.log('Someone is looking for a company:', req.params);
+    console.log(chalk.red('Someone is looking for a company:', req.params));
     const { name } = req.params;
     const companies = [
         { slug: "createserver", name: "CreateServer.com" },
-        { slug: "rbdevelopment", name: "RB_Development.Inc" }
+        { slug: "rb", name: "RB_Development.Inc" }
     ];
 
     const company = companies.find(x => x.slug === name);
@@ -27,5 +28,5 @@ app.get('/kontakt', (req, res) => {
 })
 
 app.listen(PORT, () => {
-    console.log(`Server is listening on port: ${PORT}`)
+    console.log(chalk.blue(`Server is listening on port: ${PORT}`));
 })
