@@ -36,6 +36,10 @@ app.get('/kontakt', (req, res) => {
     res.send('Dane kontaktowe')
 })
 
+app.get('*', (req, res) => {
+    res.render('errors/404');
+})
+
 app.listen(PORT, () => {
     console.log(chalk.green(`Server is listening on port: ${PORT}`));
 })
