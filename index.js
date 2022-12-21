@@ -15,7 +15,9 @@ app.set('layout', './layouts/main');
 app.get('/', (req, res) => {
     // res.send('This is main page of the express server!');
     // res.sendFile(path.join(__dirname + '/views/home.html'));
-    res.render('home');
+    res.render('home', {
+        title: 'Main page'
+    });
 })
 
 app.get('/companies/:name', (req, res) => {
