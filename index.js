@@ -3,11 +3,14 @@ const app = express();
 const PORT = 3000;
 const chalk = require('chalk');
 const path = require('path');
+const ejsLayouts = require('express-ejs-layouts');
 
 
 //view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname + '/views'));
+app.use(ejsLayouts);
+app.set('layout', './layouts/main');
 
 app.get('/', (req, res) => {
     // res.send('This is main page of the express server!');
