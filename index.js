@@ -32,7 +32,8 @@ app.get('/companies/:name', (req, res) => {
         res.render('company',
             {
                 name: company?.name,
-                companies
+                companies,
+                title: company?.name ?? 'None'
             });
     } else {
         res.send('Company does not exist in DB');
@@ -44,7 +45,10 @@ app.get('/kontakt', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-    res.render('errors/404');
+    res.render('errors/404', {
+        title: '404',
+        layout: 'layouts/minimalistic'
+    });
 })
 
 app.listen(PORT, () => {
