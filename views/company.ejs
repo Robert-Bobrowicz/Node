@@ -1,15 +1,11 @@
-<!-- <%- include('partials/header') -%> -->
+<h2>Company name: <%= name %>
+</h2>
 
-    <h2>Company name: <%= name %>
-    </h2>
+<ul>
+    <% companies.forEach(company=> { %>
+        <li>
+            <%= company.name %>
+        </li>
+        <% }); %>
 
-    <ul>
-        <% companies.forEach(company=> { %>
-            <li>
-                <%= company.name %>
-            </li>
-            <% }); %>
-
-    </ul>
-
-    <!-- <%- include('partials/footer') -%>  po utworzeniu layoutu to już nie jest potrzebne a tylko samo body-->  
+</ul>
