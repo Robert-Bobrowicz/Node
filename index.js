@@ -11,6 +11,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname + '/views'));
 app.use(ejsLayouts);
 app.set('layout', './layouts/main');
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     // res.send('This is main page of the express server!');
