@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/companies/:name', (req, res) => {
-    console.log(chalk.red('Someone is looking for a company:', req.params));
+    console.log(chalk.red('Someone is looking for a company:', req.url));
     const { name } = req.params;
     const companies = [
         { slug: "createserver", name: "CreateServer.com" },

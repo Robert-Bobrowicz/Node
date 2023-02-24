@@ -2,3 +2,8 @@ body {
     color: rgb(203, 209, 202);
     background-color: rgba(9, 9, 9, 0.958);
 }
+
+.logo {
+    max-height: 80px;
+    opacity: 0.9;
+}
