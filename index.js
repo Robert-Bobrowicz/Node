@@ -16,8 +16,10 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     // res.send('This is main page of the express server!');
     // res.sendFile(path.join(__dirname + '/views/home.html'));
+    console.log(chalk.greenBright('Someone is looking for Main page:', req.url));
     res.render('home', {
-        title: 'Main page'
+        title: 'Main page',
+        url: req.url
     });
 })
 
@@ -36,7 +38,8 @@ app.get('/companies/:name', (req, res) => {
             {
                 name: company?.name,
                 companies,
-                title: company?.name ?? 'None'
+                title: company?.name ?? 'None',
+                url: req.url
             });
     } else {
         res.send('Company does not exist in DB');
@@ -50,7 +53,8 @@ app.get('/kontakt', (req, res) => {
 app.get('*', (req, res) => {
     res.render('errors/404', {
         title: '404',
-        layout: 'layouts/minimalistic'
+        layout: 'layouts/minimalistic',
+        url: req.url
     });
 })
 
