@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 mongoose.set('strictQuery', true);
 mongoose.connect('mongodb://127.0.0.1:27017/node') //po slashu podaję nazwę bazy do której się łaczę
 
-//model
-const Company = mongoose.model('company', {
+//model nad Schema
+const companySchema = new Schema({
     slug: {
         type: String,
         required: [true, '"slug" is required'],
@@ -13,7 +14,9 @@ const Company = mongoose.model('company', {
             if (value === 'slug') {
                 throw new Error('Name "slug" is not allowed to use for company slug.');
             }
-        }
+        },
+        trim: true
+        // lowercase: true
     },
     name: {
         type: String,
@@ -21,12 +24,16 @@ const Company = mongoose.model('company', {
     }
 });
 
+//setter
+companySchema.path('slug').set((value) => value.toLowerCase());
+
+const Company = mongoose.model('company', companySchema);
 
 //create element(s) in DB
 async function createEl() {
     const company = new Company({
-        slug: 'slug', //skylink-1',
-        name: 'SkyLink One Ltd.'
+        slug: '   skyStar-2   ', //'slug', //'skylink-1',
+        name: 'SkyLink-Star 2 Inc.'
     });
 
     try {
