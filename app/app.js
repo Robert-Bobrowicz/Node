@@ -1,14 +1,13 @@
+//plik konfiguracyjny
 const express = require('express');
 const app = express();
-const PORT = 3000;
-const chalk = require('chalk');
 const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
-
+const chalk = require('chalk');
 
 //view engine
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname + '/views'));
+app.set('views', path.join('./views'));
 app.use(ejsLayouts);
 app.set('layout', './layouts/main');
 app.use(express.static('public'));
@@ -56,8 +55,6 @@ app.get('*', (req, res) => {
         layout: 'layouts/minimalistic',
         url: req.url
     });
-})
+});
 
-app.listen(PORT, () => {
-    console.log(chalk.green(`Server is listening on port: ${PORT}`));
-})
+module.exports = app;

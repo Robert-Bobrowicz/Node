@@ -16,7 +16,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon index.js -e js,json"
+    "watch": "nodemon app/index.js -e js,json"
   },
   "author": "",
   "license": "ISC"
