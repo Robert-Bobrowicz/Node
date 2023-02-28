@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Company = require('./models/company');
-const url = 'mongodb://127.0.0.1:27017/node';
+const { dbUrl } = require('../config');
 
 mongoose.set('strictQuery', true);
-mongoose.connect(url); //po slashu podaję nazwę bazy do której się łaczę
+mongoose.connect(dbUrl); //po slashu podaję nazwę bazy do której się łaczę
 
 //create element(s) in DB
 async function createEl() {

@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
-const chalk = require('chalk');
 
 //init db
 require('./db/db-mongoose');
