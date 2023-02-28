@@ -16,6 +16,6 @@ app.set('layout', './layouts/main');
 app.use(express.static('public'));
 
 //mount routes
-app.use(require('./db/routes/web'));
+app.use(require('./routes/web'));
 
 module.exports = app;
