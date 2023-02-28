@@ -1,33 +1,9 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Company = require('./models/company');
+const url = 'mongodb://127.0.0.1:27017/node';
 
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb://127.0.0.1:27017/node') //po slashu podaję nazwę bazy do której się łaczę
-
-//model nad Schema
-const companySchema = new Schema({
-    slug: {
-        type: String,
-        required: [true, '"slug" is required'],
-        minLength: [3, 'slug requires minimum 3 chcracteres'],
-        validate: value => {
-            if (value === 'slug') {
-                throw new Error('Name "slug" is not allowed to use for company slug.');
-            }
-        },
-        trim: true
-        // lowercase: true
-    },
-    name: {
-        type: String,
-        required: [true, 'Company name is required']
-    }
-});
-
-//setter
-companySchema.path('slug').set((value) => value.toLowerCase());
-
-const Company = mongoose.model('company', companySchema);
+mongoose.connect(url); //po slashu podaję nazwę bazy do której się łaczę
 
 //create element(s) in DB
 async function createEl() {
