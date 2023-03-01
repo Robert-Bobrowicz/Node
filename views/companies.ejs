@@ -1,0 +1,9 @@
+<h3>Companies:</h3>
+
+<ul>
+    <% companies.forEach(company=> { %>
+        <li><a href='/companies/<%= company.slug %>'>
+                <%= company.name %>
+            </a></li>
+        <% }); %>
+</ul>
