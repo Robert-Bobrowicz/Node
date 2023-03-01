@@ -10,24 +10,24 @@ class CompanyController {
         // console.log(companies);
         res.render('companies', {
             companies,
-            url: req.url,
+            // url: req.url,
             title: 'All Companies'
         });
     };
 
     async showCompany(req, res) {
         console.log(chalk.red('Someone is looking for a company:', req.url));
-        
+
         const { name } = req.params;
-        const company = await Company.findOne({slug: name});
-        
+        const company = await Company.findOne({ slug: name });
+
         if (company) {
             // res.send(`Company name: ${company.name}`);
             res.render('company',
                 {
                     name: company?.name,
                     title: company?.name ?? 'None',
-                    url: req.url
+                    // url: req.url
                 });
         } else {
             res.send('Company does not exist in DB');

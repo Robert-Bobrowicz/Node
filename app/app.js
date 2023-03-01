@@ -14,6 +14,9 @@ app.use(ejsLayouts);
 app.set('layout', './layouts/main');
 app.use(express.static('public'));
 
+//middleware
+app.use('/', require('./middlewares/view-url-params'));
+
 //mount routes
 app.use(require('./routes/web'));
 

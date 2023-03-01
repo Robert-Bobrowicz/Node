@@ -7,7 +7,7 @@ class PageController {
         console.log(chalk.greenBright('Someone is looking for Main page:', req.url));
         res.render('home', {
             title: 'Main page',
-            url: req.url
+            // url: req.url po dodaniu middleware usuwam stąd url
         });
     };
 
@@ -15,7 +15,7 @@ class PageController {
         res.render('errors/404', {
             title: '404',
             layout: 'layouts/minimalistic',
-            url: req.url
+            // url: req.url (j/w)
         });
     };
 };
