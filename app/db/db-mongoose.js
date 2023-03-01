@@ -3,7 +3,7 @@ const Company = require('./models/company');
 const { dbUrl } = require('../config');
 
 mongoose.set('strictQuery', true);
-mongoose.connect(dbUrl, () => console.log('db connected')); //po slashu podaję nazwę bazy do której się łaczę
+mongoose.connect(dbUrl, () => console.log('db connected'));
 
 //create element(s) in DB
 // async function createEl() {
