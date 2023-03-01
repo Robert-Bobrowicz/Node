@@ -16,8 +16,9 @@ const companySchema = new Schema({
         type: String,
         required: [true, 'Company name is required']
     },
-    employessCount: {
-        type: Number
+    employeesCount: {
+        type: Number,
+        min: 1
     }
 });
 

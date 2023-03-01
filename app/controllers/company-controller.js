@@ -45,7 +45,7 @@ class CompanyController {
         const company = new Company({
             name: req.body.name,
             slug: req.body.slug,
-            employeesCount: req.body.employeesCount
+            employeesCount: req.body.employeesCount || undefined
         });
         await company.save();
         res.redirect('/companies');
