@@ -13,8 +13,8 @@
                     <a class="nav-link <%- url === '/' && 'active' %>" aria-current=" page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <%- url==='/companies/rb' && 'active' %>" href="/companies/rb">RB Development
-                        Inc.</a>
+                    <a class="nav-link <%- url==='/companies/rb' && 'active' %>" href="/companies">All Companies in DB
+                    </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle <%- url.includes('/companies') ? 'active' : false %>" href="#"
@@ -22,8 +22,7 @@
                         Companies
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/companies/createserver">Create server Ltd.</a></li>
-                        <li><a class="dropdown-item" href="/companies/rb">RB Development Inc.</a></li>
+                        <li><a class="dropdown-item" href="/companies">All Companies</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

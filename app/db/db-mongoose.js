@@ -15,10 +15,7 @@ async function createEl() {
     try {
         await company.save();
     } catch (err) {
-        console.log('Smth went wrong to save element(s) to DB')
-        // console.log(err.errors.slug.message);
-        // console.log(err.errors.name.properties.message);
-        // console.log(err.message);
+        console.log('Smth went wrong to save element(s) to DB');
         for (const key in err.errors) {
             console.log(err.errors[key].message);
         }
