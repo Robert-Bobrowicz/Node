@@ -41,7 +41,14 @@ class CompanyController {
     };
 
     async addCompany(req, res) {
-        console.log(req.body);
+        // console.log(req.body); //undefined? => new middleware required (body parser) 
+        const company = new Company({
+            name: req.body.name,
+            slug: req.body.slug,
+            employeesCount: req.body.employeesCount
+        });
+        await company.save();
+        res.redirect('/companies');
     };
 };
 

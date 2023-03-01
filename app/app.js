@@ -17,6 +17,9 @@ app.use(express.static('public'));
 //middleware
 app.use('/', require('./middlewares/view-url-params'));
 
+//body parser
+app.use(express.urlencoded({ extended: true })); //parser for body-parser for application /x-www-form-urlencoded
+
 //mount routes
 app.use(require('./routes/web'));
 
