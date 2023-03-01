@@ -33,6 +33,16 @@ class CompanyController {
             res.send('Company does not exist in DB');
         };
     };
+
+    showAddComapnyForm(req, res) {
+        res.render('./pages/company/addCompanyForm', {
+            title: 'Add new company'
+        });
+    };
+
+    async addCompany(req, res) {
+        console.log(req.body);
+    };
 };
 
 module.exports = new CompanyController();
