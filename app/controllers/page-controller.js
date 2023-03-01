@@ -5,7 +5,7 @@ class PageController {
         // res.send('This is main page of the express server!');
         // res.sendFile(path.join(__dirname + '/views/home.html'));
         console.log(chalk.greenBright('Someone is looking for Main page:', req.url));
-        res.render('home', {
+        res.render('./pages/home', {
             title: 'Main page',
             // url: req.url po dodaniu middleware usuwam stąd url
         });
