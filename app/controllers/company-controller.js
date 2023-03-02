@@ -67,14 +67,17 @@ class CompanyController {
         const { name } = req.params;
         const company = await Company.findOne({ slug: name });
         res.render('./pages/company/editCompany', {
-            title: 'Add new company',
+            title: 'Edit company',
             form: company
         });
     };
 
     async editCompany(req, res) {
-        // console.log(req.body); //undefined? => new middleware required (body parser) 
-        // const company = 
+        const { name } = req.params;
+        const company = await Company.findOne({ slug: name });
+        company.name = req.body.name;
+        company.slug = req.body.slug;
+        company.employeesCount = req.body.employeesCount;
 
         try {
             await company.save();
