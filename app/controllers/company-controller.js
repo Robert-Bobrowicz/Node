@@ -47,8 +47,16 @@ class CompanyController {
             slug: req.body.slug,
             employeesCount: req.body.employeesCount || undefined
         });
-        await company.save();
-        res.redirect('/companies');
+
+        try {
+            await company.save();
+            res.redirect('/companies');
+        } catch (err) {
+            res.render('./pages/company/addCompanyForm', {
+                title: 'Error',
+                errors: err.errors
+            });
+        };
     };
 };
 
