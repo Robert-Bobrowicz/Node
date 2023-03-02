@@ -54,7 +54,8 @@ class CompanyController {
         } catch (err) {
             res.render('./pages/company/addCompanyForm', {
                 title: 'Error',
-                errors: err.errors
+                errors: err.errors,
+                form: req.body
             });
         };
     };

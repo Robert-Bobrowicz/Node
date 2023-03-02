@@ -1,7 +1,7 @@
 <form method="POST" action="/admin/companies/add">
     <div class="mb-3">
         <label for="" class="form-label">Company name</label>
-        <input type="text" name="name" class="form-control 
+        <input type="text" name="name" value="<%= form.name %>" class="form-control 
         <% if ( errors?.name ) { %>
             is-invalid
             <% } %>
@@ -15,7 +15,7 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Slug</label>
-        <input type="text" name="slug" class="form-control 
+        <input type="text" name="slug" value="<%= form.slug %>" class="form-control 
         <% if ( errors?.slug ) { %>
             is-invalid
             <% } %>
@@ -30,20 +30,20 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Employees count</label>
-        <input type="number" name="employeesCount" class="form-control">
+        <input type="number" name="employeesCount" value="<%= form.employeesCount %>" class="form-control">
     </div>
 
     <button class="btn btn-primary">Add company</button>
 </form>
 
 <% if (errors) { %>
-    <div class="alert alert-danger mt-3">Something went wrong:
-        <ul>
+    <div class="alert alert-danger mt-3">Something went wrong.
+        <!-- <ul>
             <% for (const key in errors) { %>
                 <li>
                     <%= errors[key].message %>
                 </li>
                 <% } %>
-        </ul>
+        </ul> -->
     </div>
     <% } %>
