@@ -1,7 +1,11 @@
 <form method="POST" action="/admin/companies/add">
     <div class="mb-3">
         <label for="" class="form-label">Company name</label>
-        <input type="text" name="name" class="form-control" required>
+        <input type="text" name="name" class="form-control 
+        <% if (typeof errors !=='undefined' && errors.name ) { %>
+            is-invalid
+            <% } %>
+        " required>
         <% if (typeof errors !=='undefined' && errors.name ) { %>
             <div class="invalid-feedback">
                 <%= errors.name.message %>
@@ -11,7 +15,11 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Slug</label>
-        <input type="text" name="slug" class="form-control" required>
+        <input type="text" name="slug" class="form-control 
+        <% if (typeof errors !=='undefined' && errors.slug ) { %>
+            is-invalid
+            <% } %>
+        " required>
         <div class="form-text">Minimum 3 characters</div>
         <% if (typeof errors !=='undefined' && errors.slug ) { %>
             <div class="invalid-feedback">
