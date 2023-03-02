@@ -34,6 +34,8 @@ class CompanyController {
         };
     };
 
+
+    //add Company
     showAddComapnyForm(req, res) {
         res.render('./pages/company/addCompanyForm', {
             title: 'Add new company'
@@ -53,6 +55,32 @@ class CompanyController {
             res.redirect('/companies');
         } catch (err) {
             res.render('./pages/company/addCompanyForm', {
+                title: 'Error',
+                errors: err.errors,
+                form: req.body
+            });
+        };
+    };
+
+    //Edit Company
+    async showEditComapnyForm(req, res) {
+        const { name } = req.params;
+        const company = await Company.findOne({ slug: name });
+        res.render('./pages/company/editCompany', {
+            title: 'Add new company',
+            form: company
+        });
+    };
+
+    async editCompany(req, res) {
+        // console.log(req.body); //undefined? => new middleware required (body parser) 
+        // const company = 
+
+        try {
+            await company.save();
+            res.redirect('/companies');
+        } catch (err) {
+            res.render('./pages/company/editCompany', {
                 title: 'Error',
                 errors: err.errors,
                 form: req.body
