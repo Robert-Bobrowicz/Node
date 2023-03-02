@@ -2,11 +2,11 @@
     <div class="mb-3">
         <label for="" class="form-label">Company name</label>
         <input type="text" name="name" class="form-control 
-        <% if (typeof errors !=='undefined' && errors.name ) { %>
+        <% if ( errors?.name ) { %>
             is-invalid
             <% } %>
         " required>
-        <% if (typeof errors !=='undefined' && errors.name ) { %>
+        <% if ( errors?.name ) { %>
             <div class="invalid-feedback">
                 <%= errors.name.message %>
             </div>
@@ -16,12 +16,12 @@
     <div class="mb-3">
         <label for="" class="form-label">Slug</label>
         <input type="text" name="slug" class="form-control 
-        <% if (typeof errors !=='undefined' && errors.slug ) { %>
+        <% if ( errors?.slug ) { %>
             is-invalid
             <% } %>
         " required>
         <div class="form-text">Minimum 3 characters</div>
-        <% if (typeof errors !=='undefined' && errors.slug ) { %>
+        <% if ( errors?.slug ) { %>
             <div class="invalid-feedback">
                 <%= errors.slug.message %>
             </div>
@@ -36,7 +36,7 @@
     <button class="btn btn-primary">Add company</button>
 </form>
 
-<% if (typeof errors !=='undefined' ) { %>
+<% if (errors) { %>
     <div class="alert alert-danger mt-3">Something went wrong:
         <ul>
             <% for (const key in errors) { %>
