@@ -10,7 +10,8 @@
                 </p>
                 <a href='/companies/<%= company.slug %>' class="btn btn-primary">Show company</a>
                 <a href='/admin/companies/<%= company.slug %>/edit' class="btn btn-warning">Edit company</a>
-                <a href='/admin/companies/<%= company.slug %>/delete' class="btn btn-danger">Delete company</a>
+                <a href='/admin/companies/<%= company.slug %>/delete' class="btn btn-danger"
+                    onclick="return confirm('Are you sure to delete company from database?')">Delete company</a>
             </div>
         </div>
         <% }); %>

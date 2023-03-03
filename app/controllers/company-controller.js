@@ -90,6 +90,18 @@ class CompanyController {
             });
         };
     };
+
+    async deleteCompany(req, res) {
+        const { name } = req.params;
+
+        try {
+            await Company.deleteOne({ slug: name });
+            console.log(chalk.red(`Company ${name} deleted from DB.`));
+            res.redirect('/companies');
+        } catch (err) {
+            console.log('Smth went wrong - action: delete company.')
+        }
+    };
 };
 
 module.exports = new CompanyController();
