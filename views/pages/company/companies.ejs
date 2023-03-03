@@ -1,18 +1,15 @@
-<h3>Companies:</h3>
+<h3 class="mt-3">Companies:</h3>
 
-<ul>
-    <% companies.forEach(company=> { %>
-
-        <div class="card bg-dark mb-3">
-            <div class="card-body">
-                <p class="h3 mb-4">
-                    <%= company.name %>
-                </p>
-                <a href='/companies/<%= company.slug %>' class="btn btn-primary">Show company</a>
-                <a href='/admin/companies/<%= company.slug %>/edit' class="btn btn-warning">Edit company</a>
-                <a href='/admin/companies/<%= company.slug %>/delete' class="btn btn-danger"
-                    onclick="return confirm('Are you sure to delete company from database?')">Delete company</a>
-            </div>
+<% companies.forEach(company=> { %>
+    <div class="card bg-dark mb-3">
+        <div class="card-body">
+            <p class="h3 mb-4">
+                <%= company.name %>
+            </p>
+            <a href='/companies/<%= company.slug %>' class="btn btn-primary">Show company</a>
+            <a href='/admin/companies/<%= company.slug %>/edit' class="btn btn-warning">Edit company</a>
+            <a href='/admin/companies/<%= company.slug %>/delete' class="btn btn-danger"
+                onclick="return confirm('Are you sure to delete company from database?')">Delete company</a>
         </div>
-        <% }); %>
-</ul>
+    </div>
+    <% }); %>
