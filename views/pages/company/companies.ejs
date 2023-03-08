@@ -2,16 +2,33 @@
 
 <%- include('partials/search') %>
 
-    <% companies.forEach(company=> { %>
-        <div class="card bg-dark mb-3">
-            <div class="card-body">
-                <p class="h3 mb-4">
-                    <%= company.name %>
-                </p>
-                <a href='/companies/<%= company.slug %>' class="btn btn-primary">Show company</a>
-                <a href='/admin/companies/<%= company.slug %>/edit' class="btn btn-warning">Edit company</a>
-                <a href='/admin/companies/<%= company.slug %>/delete' class="btn btn-danger"
-                    onclick="return confirm('Are you sure to delete company from database?')">Delete company</a>
-            </div>
+    <div class="row">
+        <div class="col-3">
+            <form class="form-control" method="GET">
+                <label for="sort" class="form-label">sort by</label>
+                <select class="form-control" name="sort" id="sort">
+                    <option value="">Default</option>
+                    <option value="name">Company name (a-z)</option>
+                    <option value="name">Company name (z-a)</option>
+                    <option>Employees count</option>
+                </select>
+                <button class="btn btn-primary mt-5 mb-3">Sort</button>
+            </form>
         </div>
-        <% }); %>
+
+        <div class="col-9">
+            <% companies.forEach(company=> { %>
+                <div class="card bg-dark mb-3">
+                    <div class="card-body">
+                        <p class="h3 mb-4">
+                            <%= company.name %>
+                        </p>
+                        <a href='/companies/<%= company.slug %>' class="btn btn-primary">Show company</a>
+                        <a href='/admin/companies/<%= company.slug %>/edit' class="btn btn-warning">Edit company</a>
+                        <a href='/admin/companies/<%= company.slug %>/delete' class="btn btn-danger"
+                            onclick="return confirm('Are you sure to delete company from database?')">Delete company</a>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+    </div>

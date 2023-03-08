@@ -8,7 +8,7 @@ class CompanyController {
         let companies;
 
         if (q) {
-            companies = await Company.find({ name: { $regex: q, $options: 'i' } });
+            companies = await Company.find({ name: { $regex: q || '', $options: 'i' } });
             console.log(`company found`);
         } else {
             companies = await Company.find({});
