@@ -1,34 +1,38 @@
 <h3 class="mt-3">Companies:</h3>
 
-<%- include('partials/search') %>
+<form>
+    <%- include('partials/search') %>
 
-    <div class="row">
-        <div class="col-3">
-            <form class="form-control" method="GET">
+        <div class="row">
+            <div class="col-3">
+                <!-- <form class="form-control" method="GET"> //form removed due to connect query.q and query.sort (as well as in search.ejs) -->
                 <label for="sort" class="form-label">sort by</label>
                 <select class="form-control" name="sort" id="sort">
                     <option value="">Default</option>
-                    <option value="name">Company name (a-z)</option>
-                    <option value="name">Company name (z-a)</option>
-                    <option>Employees count</option>
+                    <option value="name" <%- query.sort==='name' ? 'selected' : '' %>>Company name (a-z)</option>
+                    <option value="name" <%- query.sort==='name' ? 'selected' : '' %>>Company name (z-a)</option>
+                    <option value="employessCount" <%- query.sort==='employessCount' ? 'selected' : '' %>>Employees
+                        count</option>
                 </select>
                 <button class="btn btn-primary mt-5 mb-3">Sort</button>
-            </form>
-        </div>
+                <!-- </form> -->
+            </div>
 
-        <div class="col-9">
-            <% companies.forEach(company=> { %>
-                <div class="card bg-dark mb-3">
-                    <div class="card-body">
-                        <p class="h3 mb-4">
-                            <%= company.name %>
-                        </p>
-                        <a href='/companies/<%= company.slug %>' class="btn btn-primary">Show company</a>
-                        <a href='/admin/companies/<%= company.slug %>/edit' class="btn btn-warning">Edit company</a>
-                        <a href='/admin/companies/<%= company.slug %>/delete' class="btn btn-danger"
-                            onclick="return confirm('Are you sure to delete company from database?')">Delete company</a>
+            <div class="col-9">
+                <% companies.forEach(company=> { %>
+                    <div class="card bg-dark mb-3">
+                        <div class="card-body">
+                            <p class="h3 mb-4">
+                                <%= company.name %>
+                            </p>
+                            <a href='/companies/<%= company.slug %>' class="btn btn-primary">Show company</a>
+                            <a href='/admin/companies/<%= company.slug %>/edit' class="btn btn-warning">Edit company</a>
+                            <a href='/admin/companies/<%= company.slug %>/delete' class="btn btn-danger"
+                                onclick="return confirm('Are you sure to delete company from database?')">Delete
+                                company</a>
+                        </div>
                     </div>
-                </div>
-                <% }); %>
+                    <% }); %>
+            </div>
         </div>
-    </div>
+</form>

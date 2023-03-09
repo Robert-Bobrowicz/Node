@@ -11,6 +11,6 @@ body {
 .form-control,
 .form-control select,
 .form-control option {
-    color: rgb(203, 209, 202);
+    color: rgb(203, 209, 202) !important;
     background-color: #212529 !important;
 }
