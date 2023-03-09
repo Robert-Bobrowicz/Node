@@ -4,16 +4,23 @@ const chalk = require('chalk');
 class CompanyController {
 
     async showAllCompanies(req, res) {
-        const { q } = req.query;
+        const { q, sort } = req.query;
+        let query = Company.find({ name: { $regex: q || '', $options: 'i' } });
         let companies;
 
-        if (q) {
-            companies = await Company.find({ name: { $regex: q || '', $options: 'i' } });
-            console.log(`company found`);
+        if (sort) {
+            const s = sort.split('|');
+            query = query.sort({
+                [s[0]]: s[1]
+            });
+
+            console.log(`company(-ies) found and sorted`);
         } else {
             companies = await Company.find({});
             console.log(chalk.greenBright(`All ${companies.length} companies in DB displayed.`));
         };
+
+        companies = await query.exec();
 
         // console.log(companies);
         res.render('./pages/company/companies', {
