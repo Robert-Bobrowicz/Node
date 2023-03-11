@@ -5,7 +5,18 @@ class CompanyController {
 
     async showAllCompanies(req, res) {
         const { q, sort, countmin, countmax } = req.query;
-        let query = Company.find({ name: { $regex: q || '', $options: 'i' }, employeesCount: { $gte: countmin || 0 } });
+        const where = {};
+
+        if (q) {
+            where.name = { $regex: q || '', $options: 'i' };
+        }
+        if (countmin || countmax) {
+            where.employeesCount = {};
+            if (countmin) where.employeesCount.$gte = countmin;
+            if (countmax) where.employeesCount.$lte = countmax;
+        }
+
+        let query = Company.find(where);
         let companies;
 
         if (sort) {

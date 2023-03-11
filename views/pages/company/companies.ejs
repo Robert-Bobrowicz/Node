@@ -17,6 +17,7 @@
                             <p class="h3 mb-4">
                                 <%= company.name %>
                             </p>
+                            <p>Employees: <%- company.employeesCount %></p>
                             <a href='/companies/<%= company.slug %>' class="btn btn-primary">Show company</a>
                             <a href='/admin/companies/<%= company.slug %>/edit' class="btn btn-warning">Edit company</a>
                             <a href='/admin/companies/<%= company.slug %>/delete' class="btn btn-danger"
