@@ -5,21 +5,9 @@
 
         <div class="row">
             <div class="col-3">
-                <!-- <form class="form-control" method="GET"> //form removed due to connect query.q and query.sort (as well as in search.ejs) -->
-                <label for="sort" class="form-label">sort by</label>
-                <select class="form-control" name="sort" id="sort">
-                    <option value="">Default</option>
-                    <option value="name|asc" <%- query.sort==='name|asc' ? 'selected' : '' %>>Company name (a-z)
-                    </option>
-                    <option value="name|desc" <%- query.sort==='name|desc' ? 'selected' : '' %>>Company name (z-a)
-                    </option>
-                    <option value="employeesCount|asc" <%- query.sort==='employeesCount|asc' ? 'selected' : '' %>
-                        >Employees count (asc)</option>
-                    <option value="employeesCount|desc" <%- query.sort==='employeesCount|desc' ? 'selected' : '' %>
-                        >Employees count (desc)</option>
-                </select>
-                <button class="btn btn-primary mt-5 mb-3">Sort</button>
-                <!-- </form> -->
+
+                <%- include('partials/filters') %>
+
             </div>
 
             <div class="col-9">
