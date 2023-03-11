@@ -4,8 +4,8 @@ const chalk = require('chalk');
 class CompanyController {
 
     async showAllCompanies(req, res) {
-        const { q, sort } = req.query;
-        let query = Company.find({ name: { $regex: q || '', $options: 'i' } });
+        const { q, sort, countmin, countmax } = req.query;
+        let query = Company.find({ name: { $regex: q || '', $options: 'i' }, employeesCount: { $gte: countmin || 0 } });
         let companies;
 
         if (sort) {
