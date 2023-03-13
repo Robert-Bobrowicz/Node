@@ -7,9 +7,15 @@ class CompanyController {
         const { q, sort, countmin, countmax } = req.query;
         const where = {};
 
+        const page = 1;
+        const perPage = 5;
+
+        //search (query)
         if (q) {
             where.name = { $regex: q || '', $options: 'i' };
         }
+
+        // filters        
         if (countmin || countmax) {
             where.employeesCount = {};
             if (countmin) where.employeesCount.$gte = countmin;
@@ -18,7 +24,15 @@ class CompanyController {
 
         let query = Company.find(where);
         let companies;
+        const resultsCount = await Company.find(where).count();
+        const pagesCount = resultsCount / perPage;
 
+        //pagination
+        query = query.skip((page - 1) * perPage);
+        query = query.limit(perPage);
+
+
+        //sort
         if (sort) {
             const s = sort.split('|');
             query = query.sort({
@@ -31,13 +45,17 @@ class CompanyController {
             console.log(chalk.greenBright(`All ${companies.length} companies in DB displayed.`));
         };
 
+        //exec query
         companies = await query.exec();
 
         // console.log(companies);
         res.render('./pages/company/companies', {
             companies,
             // url: req.url,
-            title: 'Companies'
+            title: 'Companies',
+            page: page,
+            pagesCount,
+            resultsCount
         });
     };
 
