@@ -7,7 +7,7 @@ class CompanyController {
         const { q, sort, countmin, countmax } = req.query;
         const where = {};
 
-        const page = 1;
+        const page = req.query.page || 1;
         const perPage = 5;
 
         //search (query)
