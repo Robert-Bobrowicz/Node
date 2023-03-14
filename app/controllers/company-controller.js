@@ -24,13 +24,10 @@ class CompanyController {
 
         let query = Company.find(where);
         let companies;
-        const resultsCount = await Company.find(where).count();
-        const pagesCount = Math.ceil(resultsCount / perPage);
 
         //pagination
         query = query.skip((page - 1) * perPage);
         query = query.limit(perPage);
-
 
         //sort
         if (sort) {
@@ -47,6 +44,8 @@ class CompanyController {
 
         //exec query
         companies = await query.exec();
+        const resultsCount = await Company.find(where).count();
+        const pagesCount = Math.ceil(resultsCount / perPage);
 
         // console.log(companies);
         res.render('./pages/company/companies', {
