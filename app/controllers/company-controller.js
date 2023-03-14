@@ -25,7 +25,7 @@ class CompanyController {
         let query = Company.find(where);
         let companies;
         const resultsCount = await Company.find(where).count();
-        const pagesCount = resultsCount / perPage;
+        const pagesCount = Math.ceil(resultsCount / perPage);
 
         //pagination
         query = query.skip((page - 1) * perPage);
