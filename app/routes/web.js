@@ -4,6 +4,7 @@ const router = new express.Router();
 const CompanyController = require('../controllers/company-controller');
 const PageController = require('../controllers/page-controller');
 const ContactControler = require('../controllers/contact-contoller');
+const UserController = require('../controllers/user-controller');
 
 router.get('/', PageController.showHome);
 router.get('/companies', CompanyController.showAllCompanies);
@@ -14,6 +15,9 @@ router.post('/admin/companies/add', CompanyController.addCompany);
 router.get('/admin/companies/:name/edit', CompanyController.showEditComapnyForm);
 router.post('/admin/companies/:name/edit', CompanyController.editCompany);
 router.get('/admin/companies/:name/delete', CompanyController.deleteCompany);
+
+router.get('/register', UserController.showRegister);
+router.post('/register', UserController.register);
 
 router.get('/kontakt', ContactControler.showContact);
 router.get('*', PageController.showNotFound);
