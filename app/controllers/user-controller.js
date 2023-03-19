@@ -1,3 +1,5 @@
+const User = require('../db/models/user');
+
 class UserController {
     showRegister(req, res) {
         res.render('pages/auth/register', {
@@ -6,8 +8,13 @@ class UserController {
     }
 
     async register(req, res) {
+        const user = new User({
+            email: req.body.email,
+            password: req.body.password
+        });
+
         try {
-            // await user.save();
+            await user.save();
             res.redirect('/login');
         } catch (err) {
             console.log(err);
