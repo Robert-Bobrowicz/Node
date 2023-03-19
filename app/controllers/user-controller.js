@@ -41,7 +41,7 @@ class UserController {
             })
         }
 
-        const isValidPassword = true; //user.comparePassword(req.body.password);
+        const isValidPassword = user.comparePassword(req.body.password);
         if (!isValidPassword) {
             return res.render('pages/auth/login', {
                 form: req.body,

@@ -29,7 +29,7 @@ const userSchema = new Schema({
 userSchema.pre('save', function (next) {
     const user = this;
     const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(value, salt);
+    const hash = bcrypt.hashSync(user.password, salt);
     user.password = hash;
     next();
 });
@@ -41,6 +41,12 @@ userSchema.post('save', function (error, doc, next) {
 
     next(error);
 });
+
+userSchema.methods = {
+    comparePassword(password) {
+        return bcrypt.compareSync(password, this.password);
+    }
+}
 
 const User = mongoose.model('User', userSchema);
 
