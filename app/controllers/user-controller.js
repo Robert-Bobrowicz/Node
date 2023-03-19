@@ -15,6 +15,9 @@ class UserController {
 
         try {
             await user.save();
+            // res.render('./companies', {
+            //     title: 'Companies'
+            // });
             res.redirect('/login');
         } catch (err) {
             console.log(err);
