@@ -1,0 +1,17 @@
+<h4>Log in</h4>
+
+<form method="POST">
+    <div class="mb-3">
+        <label for="email" class="label-control">Email</label>
+        <input type="email" class="form-control" name="email" value="<%- form.email %>" id="email" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="label-control">Password</label>
+        <input type="password" class="form-control" name="password" value="<%- form.password %>" id="password" required>
+    </div>
+    <% if (errors) { %>
+        <div class="alert alert-danger">Invalid email or password</div>
+        <% } %>
+            <button class="btn btn-primary">Log in</button>
+</form>

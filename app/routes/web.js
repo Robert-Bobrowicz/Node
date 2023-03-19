@@ -19,6 +19,9 @@ router.get('/admin/companies/:name/delete', CompanyController.deleteCompany);
 router.get('/register', UserController.showRegister);
 router.post('/register', UserController.register);
 
+router.get('/login', UserController.showLogin);
+router.post('/login', UserController.login);
+
 router.get('/kontakt', ContactControler.showContact);
 router.get('*', PageController.showNotFound);
 

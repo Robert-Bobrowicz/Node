@@ -24,6 +24,16 @@ class UserController {
             })
         }
     }
+
+    showLogin(req, res) {
+        res.render('pages/auth/login', {
+            title: 'Log in'
+        });
+    }
+
+    async login(req, res) {
+        
+    }
 }
 
 module.exports = new UserController();
