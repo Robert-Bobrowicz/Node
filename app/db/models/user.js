@@ -8,7 +8,7 @@ const userSchema = new Schema({
         required: [true, "Email ie required"],
         lowercase: true,
         trim: true,
-        unique: [true, "This email exixts in DB."],
+        unique: true, //[true, "This email exixts in DB."],
         validate: [validateEmail, 'Correct email, please.']
     },
     password: {
@@ -16,6 +16,14 @@ const userSchema = new Schema({
         required: true,
         minLength: [4, 'minimum 4 charactres are required.']
     }
+});
+
+userSchema.post('save', function (error, doc, next) {
+    if (error.code === 11000) {
+        error.errors = { email: { message: 'This email exixts in DB' }, password: { message: '' } }
+    }
+
+    next(error);
 });
 
 const User = mongoose.model('User', userSchema);
