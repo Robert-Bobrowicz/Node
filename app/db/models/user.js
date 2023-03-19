@@ -20,7 +20,8 @@ const userSchema = new Schema({
 });
 
 userSchema.path('password').set((value) => {
-    const salt = bcrypt.genSalt(10);
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(value, salt);
     return hash;
 })
 
