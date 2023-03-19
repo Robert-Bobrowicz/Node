@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 const { validateEmail } = require('../validators/validator');
 
 const userSchema = new Schema({
@@ -17,6 +18,11 @@ const userSchema = new Schema({
         minLength: [4, 'minimum 4 charactres are required.']
     }
 });
+
+userSchema.path('password').set((value) => {
+    const salt = bcrypt.genSalt(10);
+    return hash;
+})
 
 userSchema.post('save', function (error, doc, next) {
     if (error.code === 11000) {
