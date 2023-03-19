@@ -32,7 +32,29 @@ class UserController {
     }
 
     async login(req, res) {
-        
+        const user = await User.findOne({ email: req.body.email });
+        if (!user) {
+            return res.render('pages/auth/login', {
+                form: req.body,
+                title: 'Log in',
+                errors: true
+            })
+        }
+
+        const isValidPassword = true; //user.comparePassword(req.body.password);
+        if (!isValidPassword) {
+            return res.render('pages/auth/login', {
+                form: req.body,
+                title: 'Log in',
+                errors: true
+            })
+        }
+
+        req.session.user = {
+            _id: user._id,
+            email: user.email
+        };
+        res.redirect('/');
     }
 }
 
