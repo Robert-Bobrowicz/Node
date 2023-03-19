@@ -19,11 +19,20 @@ const userSchema = new Schema({
     }
 });
 
-userSchema.path('password').set((value) => {
+//poniższe haszowanie pwoduje utworzenie nowej wartości hasła: password === set value, walidacja nigdy nie będzie prwadziwa
+// userSchema.path('password').set((value) => {
+//     const salt = bcrypt.genSaltSync(10);
+//     const hash = bcrypt.hashSync(value, salt);
+//     return hash;
+// })
+
+userSchema.pre('save', function (next) {
+    const user = this;
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(value, salt);
-    return hash;
-})
+    user.password = hash;
+    next();
+});
 
 userSchema.post('save', function (error, doc, next) {
     if (error.code === 11000) {
