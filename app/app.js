@@ -28,6 +28,7 @@ app.use(express.static('public'));
 //middleware
 app.use('/', require('./middlewares/view-url-params'));
 app.use('/', require('./middlewares/user-middleware'));
+app.use('/admin', require('./middlewares/is-auth-middleware'));
 
 //body parser
 app.use(express.urlencoded({ extended: true })); //parser for body-parser for application /x-www-form-urlencoded
