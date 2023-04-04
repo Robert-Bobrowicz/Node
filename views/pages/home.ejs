@@ -1,6 +1,8 @@
 <!-- tylko treść body -->
-<h1>This is main page received from a server</h1>
+<h2>This is main page received from a server</h2>
 
 <% if (user) { %>
     <div>Hello <%- user.email%></div>
-    <% } %>
+    <% } else { %>
+        <div class="mt-3">Register and create account, please.</div>
+        <% } %>

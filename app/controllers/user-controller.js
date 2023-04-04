@@ -56,6 +56,11 @@ class UserController {
         };
         res.redirect('/');
     }
+
+    logout(req, res) {
+        req.session.destroy();
+        res.redirect('/');
+    }
 }
 
 module.exports = new UserController();

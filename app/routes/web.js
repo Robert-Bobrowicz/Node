@@ -22,6 +22,8 @@ router.post('/register', UserController.register);
 router.get('/login', UserController.showLogin);
 router.post('/login', UserController.login);
 
+router.get('/logout', UserController.logout);
+
 router.get('/kontakt', ContactControler.showContact);
 router.get('*', PageController.showNotFound);
 
