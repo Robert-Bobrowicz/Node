@@ -3,30 +3,42 @@
 <form>
     <%- include('partials/search') %>
 
-        <div class="row">
-            <div class="col-3">
-
-                <%- include('partials/filters') %>
-
+        <% if (user) { %>
+            <div class="row">
+                <div class="col-3 mb-3">
+                    <a href="/admin/companies/add" class="btn btn-success">Add new company</a>
+                </div>
             </div>
+            <% } %>
 
-            <div class="col-9">
-                <% companies.forEach(company=> { %>
-                    <div class="card bg-dark mb-3">
-                        <div class="card-body">
-                            <p class="h3 mb-4">
-                                <%= company.name %>
-                            </p>
-                            <p>Employees: <%- company.employeesCount %></p>
-                            <a href='/companies/<%= company.slug %>' class="btn btn-primary">Show company</a>
-                            <a href='/admin/companies/<%= company.slug %>/edit' class="btn btn-warning">Edit company</a>
-                            <a href='/admin/companies/<%= company.slug %>/delete' class="btn btn-danger"
-                                onclick="return confirm('Are you sure to delete company from database?')">Delete
-                                company</a>
-                        </div>
+                <div class="row">
+                    <div class="col-3">
+
+                        <%- include('partials/filters') %>
+
                     </div>
-                    <% }); %>
-            </div>
-        </div>
-        <%- include('partials/pagination') %>
+
+                    <div class="col-9">
+                        <% companies.forEach(company=> { %>
+                            <div class="card bg-dark mb-3">
+                                <div class="card-body">
+                                    <p class="h3 mb-4">
+                                        <%= company.name %>
+                                    </p>
+                                    <p>Employees: <%- company.employeesCount %></p>
+                                    <a href='/companies/<%= company.slug %>' class="btn btn-primary">Show company</a>
+
+                                    <% if (user) { %>
+                                        <a href='/admin/companies/<%= company.slug %>/edit' class="btn btn-warning">Edit
+                                            company</a>
+                                        <a href='/admin/companies/<%= company.slug %>/delete' class="btn btn-danger"
+                                            onclick="return confirm('Are you sure to delete company from database?')">Delete
+                                            company</a>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <% }); %>
+                    </div>
+                </div>
+                <%- include('partials/pagination') %>
 </form>
