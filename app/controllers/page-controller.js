@@ -8,7 +8,7 @@ class PageController {
         res.render('./pages/home', {
             title: 'Main page',
             // url: req.url po dodaniu middleware usuwam stąd url
-            user: req.session.user
+            // user: req.session.user  //dodaję nowy middleware i usuwam stąd session.user
         });
     };
 
