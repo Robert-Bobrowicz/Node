@@ -1,0 +1,22 @@
+<h4>Edit user</h4>
+
+<form method="POST">
+    <div class="mb-3">
+        <label for="email" class="label-control">Email</label>
+        <input type="email" class="form-control <%= errors?.email ? 'is-invalid' : ''%>" name="email"
+            value="<%- form.email %>" id="email" required>
+        <% if (errors?.email) { %>
+            <div class="invalid-feedback"><%- errors.email.message %></div>
+            <% } %>
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="label-control">Password</label>
+        <input type="password" class="form-control <%= errors?.password ? 'is-invalid' : ''%>" name="password"
+            value="<%- form.password %>" id="password">
+        <% if (errors?.email) { %>
+            <div class="invalid-feedback"><%- errors.password.message %></div>
+            <% } %>
+    </div>
+    <button class="btn btn-primary">Update</button>
+</form>
