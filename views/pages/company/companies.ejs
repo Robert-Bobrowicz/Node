@@ -25,6 +25,7 @@
                                     <p class="h3 mb-4">
                                         <%= company.name %>
                                     </p>
+                                    <p>Contact: <%- company.user?.email %></p>
                                     <p>Employees: <%- company.employeesCount %></p>
                                     <a href='/companies/<%= company.slug %>' class="btn btn-primary">Show company</a>
 

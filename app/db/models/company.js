@@ -19,6 +19,11 @@ const companySchema = new Schema({
     employeesCount: {
         type: Number,
         min: 1
+    },
+    user: {
+        type: mongoose.Types.ObjectId,
+        required: true,
+        ref: 'User'
     }
 });
 
