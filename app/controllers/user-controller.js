@@ -78,7 +78,7 @@ class UserController {
         try {
             await user.save();
             req.session.user.email = user.email;
-            res.redirect('/admin/profile');
+            res.redirect(back); //res.redirect('/admin/profile');
         } catch (e) {
             res.render('pages/auth/profile', {
                 errors: e.errors,
