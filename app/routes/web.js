@@ -13,7 +13,7 @@ const store = multer.diskStorage({
         cb(null, 'public/uploads');
     },
     filename: function (req, file, cb) {
-        const name = Date.now() + path.extname(file.originalname)
+        const name = Date.now() + path.extname(file.originalname);
         cb(null, name);
     }
 });
@@ -26,7 +26,7 @@ router.get('/companies', CompanyController.showAllCompanies);
 router.get('/companies/:name', CompanyController.showCompany);
 
 router.get('/admin/companies/add', CompanyController.showAddComapnyForm);
-router.post('/admin/companies/add', CompanyController.addCompany);
+router.post('/admin/companies/add', upload.single('image'), CompanyController.addCompany);
 router.get('/admin/companies/:name/edit', CompanyController.showEditComapnyForm);
 router.post('/admin/companies/:name/edit', upload.single('image'), CompanyController.editCompany);
 router.get('/admin/companies/:name/delete', CompanyController.deleteCompany);
