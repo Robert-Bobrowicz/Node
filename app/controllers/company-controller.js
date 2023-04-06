@@ -122,6 +122,7 @@ class CompanyController {
         company.name = req.body.name;
         company.slug = req.body.slug;
         company.employeesCount = req.body.employeesCount;
+        company.image = req.file.filename;
 
         try {
             await company.save();
