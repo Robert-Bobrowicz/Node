@@ -22,25 +22,34 @@
                         <% companies.forEach(company=> { %>
                             <div class="card bg-dark mb-3">
                                 <div class="card-body">
-                                    <p class="h3 mb-4">
-                                        <%= company.name %>
-                                    </p>
-                                    <% if (company.user) { %>
-                                        <p>Contact: <%- company.user?.email %></p>
-                                        <% } %>
-                                            <p>Employees: <%- company.employeesCount %></p>
-                                            <a href='/companies/<%= company.slug %>' class="btn btn-primary">Show
-                                                company</a>
-
-                                            <% if (user) { %>
-                                                <a href='/admin/companies/<%= company.slug %>/edit'
-                                                    class="btn btn-warning">Edit
-                                                    company</a>
-                                                <a href='/admin/companies/<%= company.slug %>/delete'
-                                                    class="btn btn-danger"
-                                                    onclick="return confirm('Are you sure to delete company from database?')">Delete
-                                                    company</a>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img class='img-fluid' src="/uploads/<%- company.image %>"
+                                                alt="company image">
+                                        </div>
+                                        <div class="col-9">
+                                            <p class="h3 mb-4">
+                                                <%= company.name %>
+                                            </p>
+                                            <% if (company.user) { %>
+                                                <p>Contact: <%- company.user?.email %></p>
                                                 <% } %>
+                                                    <p>Employees: <%- company.employeesCount %></p>
+                                                    <a href='/companies/<%= company.slug %>'
+                                                        class="btn btn-primary">Show
+                                                        company</a>
+
+                                                    <% if (user) { %>
+                                                        <a href='/admin/companies/<%= company.slug %>/edit'
+                                                            class="btn btn-warning">Edit
+                                                            company</a>
+                                                        <a href='/admin/companies/<%= company.slug %>/delete'
+                                                            class="btn btn-danger"
+                                                            onclick="return confirm('Are you sure to delete company from database?')">Delete
+                                                            company</a>
+                                                        <% } %>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <% }); %>
