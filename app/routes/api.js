@@ -1,12 +1,7 @@
 const express = require('express');
 const router = new express.Router();
+const CompanyController = require('../controllers/api/company-controller');
 
-router.get('/api/companies', (req, res) => {
-    res.header('Content-Type', 'application/json');
-    res.send(JSON.stringify({
-        text: 'value',
-        text2: 'value-2'
-    }));
-});
+router.get('/companies', CompanyController.showAllCompanies);
 
 module.exports = router;
