@@ -169,7 +169,12 @@ class CompanyController {
         const data = await Company.find();
         // console.log(data);
         const fileName = 'companies.csv';
-        
+        const json2csv = new Parser({ fields });
+        const csv = json2csv.parse(data);
+
+        res.header('Content-Type', 'text/csv');
+        res.attachment(fileName);
+        res.send(csv);
     }
 };
 
