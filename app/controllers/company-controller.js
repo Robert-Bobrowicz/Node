@@ -148,6 +148,10 @@ class CompanyController {
             console.log('Smth went wrong - action: delete company.')
         }
     };
+
+    getCSV(req, res) {
+        
+    }
 };
 
 module.exports = new CompanyController();

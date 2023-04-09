@@ -30,6 +30,7 @@ router.post('/admin/companies/add', upload.single('image'), CompanyController.ad
 router.get('/admin/companies/:name/edit', CompanyController.showEditComapnyForm);
 router.post('/admin/companies/:name/edit', upload.single('image'), CompanyController.editCompany);
 router.get('/admin/companies/:name/delete', CompanyController.deleteCompany);
+router.get('/csv', CompanyController.getCSV);
 
 router.get('/register', UserController.showRegister);
 router.post('/register', UserController.register);
@@ -43,6 +44,7 @@ router.post('/login', UserController.login);
 router.get('/logout', UserController.logout);
 
 router.get('/kontakt', ContactControler.showContact);
+
 router.get('*', PageController.showNotFound);
 
 module.exports = router;
