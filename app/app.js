@@ -35,6 +35,7 @@ app.use(express.urlencoded({ extended: true })); //parser for body-parser for ap
 app.use(cookieParser());
 
 //mount routes
+app.use(require('./routes/api'));
 app.use(require('./routes/web'));
 
 module.exports = app;
