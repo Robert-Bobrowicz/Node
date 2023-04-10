@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 const { validateEmail } = require('../validators/validator');
+const randomString = require('randomstring');
 
 const userSchema = new Schema({
     email: {
@@ -16,7 +17,8 @@ const userSchema = new Schema({
         type: String,
         required: true,
         minLength: [4, 'minimum 4 charactres are required.']
-    }
+    },
+    apiToken: String
 });
 
 //poniższe haszowanie pwoduje utworzenie nowej wartości hasła: password === set value, walidacja nigdy nie będzie prwadziwa
@@ -31,6 +33,10 @@ userSchema.pre('save', function (next) {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(user.password, salt);
     user.password = hash;
+    if (user.isNew) {
+        user.apiToken = randomString.generate(30);
+    }
+
     next();
 });
 
