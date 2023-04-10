@@ -10,7 +10,21 @@ class CompanyController {
     };
 
     async addCompany(req, res) {
-        console.log(req.body);
+        const company = new Company({
+            name: req.body.name,
+            slug: req.body.slug,
+            employeesCount: req.body.employeesCount || undefined,
+            user: req.body.user
+            // user: req.session.user._id,
+            // image: req.file.filename
+        });
+
+        try {
+            await company.save();
+            res.status(201).json(company);
+        } catch (err) {
+            res.status(422).json({ errors: err.errors });
+        };
     };
 };
 
