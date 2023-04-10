@@ -42,6 +42,18 @@ class CompanyController {
             res.status(422).json({ errors: err.errors });
         };
     };
+
+    async deleteCompany(req, res) {
+        const { slug } = req.params;
+
+        try {
+            await Company.deleteOne({ slug: slug });
+            console.log(chalk.red(`Company ${slug} deleted from DB.`));
+            res.status(204).send();
+        } catch (err) {
+            console.log('Smth went wrong - action: delete company.')
+        }
+    };
 };
 
 module.exports = new CompanyController();

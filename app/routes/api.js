@@ -19,5 +19,6 @@ const upload = multer({
 router.get('/companies', CompanyController.showAllCompanies);
 router.post('/companies', CompanyController.addCompany);
 router.put('/companies/:slug', upload.single('image'), CompanyController.editCompany);
+router.delete('/companies/:slug', CompanyController.deleteCompany);
 
 module.exports = router;
