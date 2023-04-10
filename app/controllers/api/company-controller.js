@@ -8,6 +8,10 @@ class CompanyController {
         console.log(chalk.greenBright('all companies get by api'));
         res.json(companies);
     };
+
+    async addCompany(req, res) {
+        
+    };
 };
 
 module.exports = new CompanyController();
