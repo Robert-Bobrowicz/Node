@@ -26,6 +26,10 @@ class CompanyController {
             res.status(422).json({ errors: err.errors });
         };
     };
+
+    async editCompany(req, res) {
+
+    };
 };
 
 module.exports = new CompanyController();
