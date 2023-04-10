@@ -16,9 +16,11 @@ const upload = multer({
     storage: store
 });
 
+const authMiddleware = require('../middlewares/is-auth-api-middleware');
+
 router.get('/companies', CompanyController.showAllCompanies);
-router.post('/companies', CompanyController.addCompany);
-router.put('/companies/:slug', upload.single('image'), CompanyController.editCompany);
-router.delete('/companies/:slug', CompanyController.deleteCompany);
+router.post('/companies', authMiddleware, CompanyController.addCompany);
+router.put('/companies/:slug', authMiddleware, upload.single('image'), CompanyController.editCompany);
+router.delete('/companies/:slug', authMiddleware, CompanyController.deleteCompany);
 
 module.exports = router;
