@@ -33,6 +33,7 @@ app.use('/admin', require('./middlewares/is-auth-middleware'));
 //body parser
 app.use(express.urlencoded({ extended: true })); //parser for body-parser for application /x-www-form-urlencoded
 app.use(cookieParser());
+app.use(express.json()); //parser for application/json data processing 
 
 //mount routes
 app.use('/api', require('./routes/api'));

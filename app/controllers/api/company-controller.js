@@ -10,7 +10,7 @@ class CompanyController {
     };
 
     async addCompany(req, res) {
-        
+        console.log(req.body);
     };
 };
 
