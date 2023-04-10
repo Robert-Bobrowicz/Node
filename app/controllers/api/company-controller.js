@@ -28,7 +28,19 @@ class CompanyController {
     };
 
     async editCompany(req, res) {
+        const { slug } = req.params;
+        const company = await Company.findOne({ slug: slug });
+        if (req.body.name) company.name = req.body.name;
+        if (req.body.slug) company.slug = req.body.slug;
+        if (req.body.employeesCount) company.employeesCount = req.body.employeesCount;
+        // company.image = req.file.filename;
 
+        try {
+            await company.save();
+            res.status(200).json(company);
+        } catch (err) {
+            res.status(422).json({ errors: err.errors });
+        };
     };
 };
 
