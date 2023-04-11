@@ -7,12 +7,16 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const { sessionKeySecret } = require('./config');
 const helmet = require('helmet');
+const rateLimiterMiddleware = require('./middlewares/rate-limiter-middleware');
 
 //init db
 require('./db/db-mongoose');
 
 //helmet
 app.use(helmet());
+
+//rate-limiter
+app.use(rateLimiterMiddleware);
 
 //session
 app.use(session({
