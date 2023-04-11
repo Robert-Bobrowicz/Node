@@ -6,9 +6,13 @@ const ejsLayouts = require('express-ejs-layouts');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const { sessionKeySecret } = require('./config');
+const helmet = require('helmet');
 
 //init db
 require('./db/db-mongoose');
+
+//helmet
+app.use(helmet());
 
 //session
 app.use(session({
